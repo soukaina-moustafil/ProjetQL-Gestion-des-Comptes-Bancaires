@@ -5,50 +5,53 @@
 # Projet :
 Une application web de gestion des comptes bancaires en Java/ JEE et Spring.	
 
-# Démo 
-- Pour voir une démo de l'application en image, visitez la page wiki :
+# DÃ©mo 
+- Pour voir une dÃ©mo sur l'Ã©volution de l'application en image, visitez la page wiki :
  https://github.com/AboubakarAhamada/Gestion-des-comptes-bancaires/wiki 
 						 
-# Spécificités fonctionnelles :
-- Chaque compte appaertient à un client.
-- Un compte bancaire peut être un compte courant ou un compte epargne.
+# SpÃ©cificitÃ©s fonctionnelles :
+- Chaque compte appaertient Ã  un client.
+- Un compte bancaire peut Ãªtre un compte courant ou un compte epargne.
 - L'application doit permettre de :
-	0. Crée un compte
+
+	0. CrÃ©e un compte
 	1. Consulter le compte d'un client
 	2. Effectuer un versement
-	3. Effectuer un retrait et dans ce cas le motant à retirer ne doit pas depasser le solde du compte. 
+	3. Effectuer un retrait et dans ce cas le motant Ã  retirer ne doit pas depasser le solde du compte. 
 	4. Effectuer un virement d'un compte vers un autre compte. Il faut encore verifier le montant pour le virement
-	5. Consulter les opérations d'un compte 
+	5. Consulter les opÃ©rations d'un compte 
 
-# Specificité techniques : 
-- Pour la consultation des opération, les opérations doivent
- s'afficher dans des pages. On doit utiliser la pagination, c'est à dire qu'on ne veut pas afficher
- toutes les opérationd sur la meme page. 
-- L'application doit être sécurisée. Seuls les personnes identifiées qui sont autorisées à 
-effectuer les opérations ci-dessus mentionnées.
-- L'application doit gérer les erreurs liées à l'utilisateur
-- L'application doit être responsive pour différentes terminaux
+# SpecificitÃ© techniques : 
+- Pour la consultation des opÃ©ration, les opÃ©rations doivent
+ s'afficher dans des pages. On doit utiliser la pagination, c'est Ã  dire qu'on ne veut pas afficher
+ toutes les opÃ©rationd sur la meme page. 
+- L'application doit Ãªtre sÃ©curisÃ©e. Seuls les personnes identifiÃ©es qui sont autorisÃ©es Ã  
+effectuer les opÃ©rations ci-dessus mentionnÃ©es.
+- L'application doit gÃ©rer les erreurs liÃ©es Ã  l'utilisateur
+- L'application doit Ãªtre responsive pour diffÃ©rentes terminaux
 
 # Architeure de l'application 
-- L'application est basée sur une architecutre en couche à savoir :
- 1. Une couche DAO pour l'accès aux données. Ici on crée les interfaces ClientRepository,
+- L'application est basÃ©e sur une architecutre en couche Ã  savoir :
+ 1. Une couche DAO pour l'accÃ¨s aux donnÃ©es. Ici on crÃ©e les interfaces ClientRepository,
  CompteRepository et OperationRepository qui heritent de l'interface JpaRepository.
- 2. Une couche Entities où on crée nos entités (classes) que seront mappées avec les tables dans la base de données
- 3.Une couche metier où on crée une interface IbanqueMetier qui définit les opérations ci-dessous mentionnées et 
+ 2. Une couche Entities oÃ¹ on crÃ©e nos entitÃ©s (classes) que seront mappÃ©es avec les tables dans la base de donnÃ©es
+ 3.Une couche metier oÃ¹ on crÃ©e une interface IbanqueMetier qui dÃ©finit les opÃ©rations ci-dessous mentionnÃ©es et 
  une classe IbanqueMetierImpl qui implemente cette classe
- 4. Une couche web (présentation) où on gère tout ce qui est web (View)
+ 4. Une couche web (prÃ©sentation) oÃ¹ on gÃ¨re tout ce qui est web (View)
  
- # Exigence techniques :
- - Utilisation de de Java et Spring Boot (Spring Data JPA, Spring Web, etc)
- - SGBD: MySQL
- - View (UI) : Thymeleaf, Bootstrap3
+ # Technologies utilisÃ©es :
+ - Java
+ - Spring Boot, Spring Data JPA, Spring Security
+ - View (UI) : Thymeleaf, JavaScript, Bootstrap3
+ - SGBD : MySQL
  
- # Outis de développement: 
+ # Outis de dÃ©veloppement: 
  - IDE : Eclipse 
- - Gestion des dépendences : Maven
- - Autre : Spring-boot-devtools
+ - Gestion des dÃ©pendences : Maven
 
-
+# Comment utiliser cette application ?
+Pour utiliser cette application, il suffit de modifier le fichier application.properties pour changer 
+le nom de la base de donnÃ©e, le username et mettre les votres.
 
 
 
