@@ -13,6 +13,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+<!--===========================================================
+ Inclure le script qui masque et demasque les champs découvert et taux 
+ avant et après la selection du type de compte 
+============================================================== -->
+
+<script src="js/script.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootsrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
@@ -65,7 +72,7 @@
 						<div class="form-group">
 							<br>
 							<button class="btn btn-default">
-								<a th:href="home">Annuler</a>
+								<a th:href="@{/}">Annuler</a>
 							</button>
 							&nbsp;&nbsp;
 							<button class=" btn btn-primary">Ajouter</button>
@@ -75,30 +82,5 @@
 			</div>
 		</div>
 	</div>
-
-	<!--==============================================
-					 JavaScript/ jQuery
-	================================================-->
-	<script>
-	$(document).ready(function(){
-		$("#decouvert").hide();
-		$("#taux").hide();
-		
-		$("select#typeCompte").change(function(){
-	        var typeCompte = $(this).children("option:selected").val();
-	        //alert("Vous avez séléctionné un compte - " + typeCompte);
-	        if(typeCompte==="compteCourant"){
-	        	$("#taux").hide();
-	        	$("#decouvert").show();
-	        }	
-	        if(typeCompte==="compteEpargne"){
-	        	$("#decouvert").hide();
-	        	$("#taux").show();
-	        }
-		});
-
-	});
-	
-	</script>
 </body>
 </html>
