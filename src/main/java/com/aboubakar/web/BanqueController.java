@@ -3,6 +3,8 @@
  */
 package com.aboubakar.web;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.aboubakar.dao.ClientRepository;
+import com.aboubakar.dao.CompteRepository;
+import com.aboubakar.entities.Client;
 import com.aboubakar.entities.Compte;
+import com.aboubakar.entities.CompteCourant;
+import com.aboubakar.entities.CompteEpargne;
 import com.aboubakar.entities.Operation;
 import com.aboubakar.metier.IBanqueMetier;
 
@@ -25,6 +32,10 @@ public class BanqueController {
 
 	@Autowired
 	private IBanqueMetier banqueMetier;
+	@Autowired
+	private ClientRepository clientRepository;
+	@Autowired 
+	private CompteRepository compteRepository;
 	
 	@RequestMapping(value= {"/","index"},method=RequestMethod.GET)
 	public String index() {
@@ -72,5 +83,31 @@ public class BanqueController {
 		}
 		
 		return "redirect:/consulterCompte?codeCompte="+codeCompte;
+	}
+	
+	@RequestMapping(value="/nouveau")
+	String creerCompte() {
+		
+		return "creerCompte";
+	}
+	
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	public String createNewAccount(String codeCompte, String nom,  String email, String typeCompte,
+			String decouvert, String taux, String solde) {
+		double _solde = Double.parseDouble(solde);
+		
+		Client client=clientRepository.save(new Client(nom,email));
+		System.out.println("=============::"+typeCompte+"========::=======");
+		if(typeCompte.contentEquals("compteCourant")) {
+			double _decouvert = Double.parseDouble(decouvert);
+			compteRepository.save(new CompteCourant(codeCompte,new Date(),_solde,client,_decouvert));
+		}
+		
+		if(typeCompte.contentEquals("compteEpargne")) {
+			double _taux = Double.parseDouble(taux);
+			compteRepository.save(new CompteEpargne(codeCompte,new Date(),_solde,client,_taux));
+		}
+		
+		return "redirect:/";
 	}
 }
