@@ -91,12 +91,13 @@
 								onchange="document.getElementById('forVirement').style.display='block'" /><label>
 								Virement</label>
 						</div>
-						<div>
-							<label>Montant (DH) : </label> <input type="text" name="montant" />
+						<div class="form-group">
+							<label class="form-label">Montant (DH) : </label> 
+							<input type="text" name="montant"  class="form-control"/>
 						</div>
-						<div id="forVirement" style="display: none">
-							<label>Vers : </label> <input type="text" name="codeCompte2"
-								placeholder="cmpte destinataire" />
+						<div class="form-group" id="forVirement" style="display: none">
+							<label class="form-label">Vers : </label> <input type="text" name="codeCompte2"
+								placeholder="cmpte destinataire" class="form-control" />
 						</div>
 						<div class="text-danger"
 							th:text="${#httpServletRequest.getParameter('error')}"></div>
